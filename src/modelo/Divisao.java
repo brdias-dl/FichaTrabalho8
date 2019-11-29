@@ -1,22 +1,27 @@
 package modelo;
 
 public class Divisao extends Descritor {
-	protected boolean aberta;
+    protected boolean aberta;
 
-	public Divisao(String nome, boolean aberta) {
-		super(nome);
-		this.aberta = aberta;
-	}
+    public Divisao(String nome, boolean aberta) {
+        super(nome);
+        this.aberta = aberta;
+    }
 
-	public void abrir(){
+    public void abrir(){
+        this.aberta= true;
+    }
 
-	}
+    public void fechar(){
+        this.aberta=false;
+    }
+    /*
+    * G N S
+     */
 
-	public void fechar(){
+    public boolean isAberta() {
+        return aberta;
+    }
 
-	}
 
-	public boolean isAberta() {
-		return aberta;
-	}
 }

@@ -10,61 +10,62 @@ public class Seguranca extends Pessoa {
 		super(nome, numero);
 		setGabinete(gabinete);
 		horariosAtendimento = new LinkedList<>();
+
 	}
 
-	public void abrirGabinete(){
-		if (gabinete.isAberta()){
+	public void abrirGabinete() {
+		if (gabinete == null || gabinete.isAberta()){
 			return;
 		}
 		gabinete.abrir();
 	}
+
 	public void fecharGabinete(){
-		if (!gabinete.isAberta()){
+		if(gabinete == null || !gabinete.isAberta()){
 			return;
 		}
 		gabinete.fechar();
 	}
 
-	public void abrir(Divisao divisao) {
-		if (divisao.isAberta()){
+	public void abrir(Divisao divisao){
+		if(divisao.isAberta()){
 			return;
 		}
 		divisao.abrir();
 	}
 
-	public void fechar(Divisao divisao) {
-		if (!divisao.isAberta()){
+	public void fechar(Divisao divisao){
+		if(!divisao.isAberta()){
 			return;
 		}
 		divisao.fechar();
 	}
 
-	public void desassociarGabinete() {
-		if (gabinete == null) {
-			return;
-		}
-
-		gabinete.remover(this);
-		gabinete = null;
+	public void desassociarGabinete(){
+	if( gabinete==null){
+		return;
+	}
+	gabinete.remover(this);
+	gabinete=null;
 	}
 
-	public void adicionar(Horario horario) {
-		if (horariosAtendimento.contains(horario)) {
+
+	public void adicionar(Horario horario){
+		if(horariosAtendimento.contains(horario)){
 			return;
 		}
 		horariosAtendimento.add(horario);
 	}
 
-	public void remover(Horario horario) {
+	public void remover(Horario horario){
 		horariosAtendimento.remove(horario);
 	}
 
 
 
 	/*
-	 * G N S
+	* G N S
 	 */
-
 	public GabineteSeguranca getGabinete() {
 		return gabinete;
 	}
@@ -74,13 +75,14 @@ public class Seguranca extends Pessoa {
 	}
 
 	public void setGabinete(GabineteSeguranca gabinete) {
-		if (gabinete == null || this.gabinete == gabinete) {
+		if(gabinete==null || this.gabinete == gabinete){
 			return;
 		}
-		if (this.gabinete != null) {
+		if( this.gabinete != null){
 			this.gabinete.remover(this);
 		}
 		this.gabinete = gabinete;
 		gabinete.adicionar(this);
 	}
+
 }

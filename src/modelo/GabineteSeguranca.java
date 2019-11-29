@@ -3,34 +3,36 @@ package modelo;
 import java.util.LinkedList;
 
 public class GabineteSeguranca extends Divisao {
-	private LinkedList<Seguranca> segurancas;
+    private LinkedList<Seguranca> segurancas;
 
-	public GabineteSeguranca(String nome, boolean aberta) {
-		super(nome, aberta);
-		this.segurancas = new LinkedList<>();
-	}
+    public GabineteSeguranca(String nome, boolean aberta) {
+        super(nome, aberta);
+        this.segurancas = new LinkedList<>();
+    }
 
-	public void adicionar(Seguranca seguranca){
-		if (seguranca == null || segurancas.contains(seguranca)){
-			return;
-		}
-		segurancas.add(seguranca);
-		seguranca.setGabinete(this);
-	}
+    public void adicionar(Seguranca seguranca) {
+        if (seguranca == null || segurancas.contains(seguranca)) {
+            return;
+        }
+        segurancas.add(seguranca);
+        seguranca.setGabinete(this);
+    }
 
 
-	public void remover(Seguranca seguranca){
-		if(!segurancas.contains(seguranca)) {
-			return;
-		}
-		segurancas.remove(seguranca);
-	}
+    public void remover(Seguranca seguranca) {
+        if (!segurancas.contains(seguranca)) {
+            return;
+        }
+        segurancas.remove(seguranca);
+        seguranca.desassociarGabinete();
+    }
 
-	/*
-	* G N S
-	 */
+    /*
+     * G N S
+     */
 
-	public LinkedList<Seguranca> getSeguranca() {
-		return new LinkedList<>(segurancas);
-	}
+    public LinkedList<Seguranca> getSeguranca() {
+        return new LinkedList<>(segurancas);
+    }
+
 }

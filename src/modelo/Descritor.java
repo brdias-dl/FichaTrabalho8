@@ -1,13 +1,22 @@
 package modelo;
 
 public class Descritor {
-	protected String nome;
+    protected String nome;
 
-	public Descritor(String nome) {
-		this.nome = nome;
-	}
+    public Descritor(String nome) {
+        this.nome = nome;
+    }
 
-	public String getNome() {
-		return this.nome;
-	}
+
+    /*
+    * G N S
+     */
+
+
+    public String getNome() {
+        return this.nome;
+    }
+
+
+
 }

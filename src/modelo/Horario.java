@@ -21,6 +21,18 @@ public class Horario {
 		return diaSemana == horario.diaSemana && horaFim2 > horaInicio1 && horaFim1 > horaInicio2;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == this){
+			return true;
+		}
+		if(!(obj instanceof Horario)){
+		return false;
+		}
+		Horario h = (Horario) obj;
+				return diaSemana == h.diaSemana&&  this.horaInicio== h.horaInicio && this.duracao == h.duracao ;
+	}
+
 	public DiaSemana getDiaSemana() {
 		return diaSemana;
 	}
