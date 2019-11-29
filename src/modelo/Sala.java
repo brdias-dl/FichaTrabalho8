@@ -7,21 +7,28 @@ public class Sala {
 	private LinkedList<Aula> aulas;
 	private boolean aberta;
 
-	public void abrir() {
+	public Sala(String nome, boolean aberta) {
+		this.nome = nome;
+		this.aberta = aberta;
+		aulas = new LinkedList<>();
+	}
+
+	public void abrir(){
 
 	}
 
-	public void fechar() {
+	public void fechar(){
 
 	}
 
-	public void adicionarAula() {
+	public void adicionarAula(){
 
 	}
 
-	public void removerAula() {
+	public void removerAula(){
 
 	}
+
 
 
 	public String getNome() {
@@ -40,7 +47,6 @@ public class Sala {
 	public boolean isAberta() {
 		return aberta;
 	}
-
 }
 
 

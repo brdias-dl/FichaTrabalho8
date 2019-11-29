@@ -30,28 +30,48 @@ public class Professor extends Pessoa {
 		}
 	}
 
+	public void abrirGabinete(){
 
-	public GabineteProfessor getGabinete(){
+	}
+
+	public void fecharGabinete(){
+
+	}
+
+	public void abrir(Sala sala){
+
+	}
+
+	public void fechar(Sala sala){
+
+	}
+
+	public void  desassociarGabinete(){
+
+	}
+
+	public void adicionar(Horario horario){
+
+	}
+
+	public void remover(Horario horario){
+
+	}
+
+	/*
+	*getter n setter
+	 */
+
+	public GabineteProfessor getGabinete() {
 		return gabinete;
 	}
 
-	public LinkedList<Horario> getHorariosAtendimento(){
+	public LinkedList<Horario> getHorariosAtendimento() {
 		return new LinkedList<>(horariosAtendimento);
 	}
 
-	public void abrirGabinete() {
-
+	public void setGabinete(GabineteProfessor gabinete) {
+		this.gabinete = gabinete;
 	}
 
-	public void fecharGabinete() {
-
-	}
-
-	public void abrir(Sala sala) {
-
-	}
-
-	public void fechar(Sala sala) {
-
-	}
 }
