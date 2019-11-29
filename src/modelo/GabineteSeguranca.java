@@ -40,7 +40,7 @@ public class GabineteSeguranca {
 	}
 
 	public LinkedList<Seguranca> getSeguranca() {
-		return new LinkedList<>(seguranca);
+		return new LinkedList<>(segurancas);
 	}
 
 	public boolean isAberta() {

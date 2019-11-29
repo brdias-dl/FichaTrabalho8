@@ -8,6 +8,12 @@ public class Seguranca {
 	private GabineteSeguranca gabinete;
 	private LinkedList<Horario> horariosAtendimento;
 
+	public Seguranca(String nome, long numero, GabineteSeguranca gabinete) {
+		this.nome = nome;
+		this.numero = numero;
+		setGabinete(gabinete);
+	}
+
 	public void abrirGabinete(){
 
 	}
@@ -68,5 +74,9 @@ public class Seguranca {
 
 	public LinkedList<Horario> getHorariosAtendimento() {
 		return new LinkedList<>(horariosAtendimento);
+	}
+
+	public void setGabinete(GabineteSeguranca gabinete) {
+		this.gabinete = gabinete;
 	}
 }
