@@ -9,29 +9,14 @@ public class Seguranca extends Pessoa {
 	public Seguranca(String nome, long numero, GabineteSeguranca gabinete) {
 		super(nome, numero);
 		setGabinete(gabinete);
+		horariosAtendimento = new LinkedList<>();
 	}
 
-	public void abrirGabinete(){
-
-	}
-
-	public void fecharGabinete(){
+	public void abrir(Divisao gabinete){
 
 	}
 
-	public void abrir(GabineteSeguranca gabinete){
-
-	}
-
-	public void fechar(GabineteSeguranca gabinete){
-
-	}
-
-	public void abrir(GabineteProfessor gabinete){
-
-	}
-
-	public void fechar(GabineteProfessor gabinete){
+	public void fechar(Divisao gabinete){
 
 	}
 
@@ -62,6 +47,12 @@ public class Seguranca extends Pessoa {
 	}
 
 	public void setGabinete(GabineteSeguranca gabinete) {
+		if (gabinete == null || this.gabinete == gabinete){
+			return;
+		}
+		if(this.gabinete != null) {
+			this.gabinete.remover(this);
+		}
 		this.gabinete = gabinete;
 	}
 }

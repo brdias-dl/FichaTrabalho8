@@ -2,31 +2,28 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class GabineteSeguranca extends Descritor {
+public class GabineteSeguranca extends Divisao {
 	private LinkedList<Seguranca> segurancas;
-	private boolean aberta;
 
 	public GabineteSeguranca(String nome, boolean aberta) {
-		super(nome);
-		this.aberta = aberta;
+		super(nome, aberta);
 		this.segurancas = new LinkedList<>();
 	}
 
-	public void abrir(){
-
-	}
-
-	public void fechar(){
-
-	}
-
-	public void adicionar(Seguranca segurancar){
-
+	public void adicionar(Seguranca seguranca){
+		if (seguranca == null || segurancas.contains(seguranca)){
+			return;
+		}
+		segurancas.add(seguranca);
+		seguranca.setGabinete(this);
 	}
 
 
 	public void remover(Seguranca seguranca){
-
+		if(!segurancas.contains(seguranca)) {
+			return;
+		}
+		segurancas.remove(seguranca);
 	}
 
 	/*
@@ -35,9 +32,5 @@ public class GabineteSeguranca extends Descritor {
 
 	public LinkedList<Seguranca> getSeguranca() {
 		return new LinkedList<>(segurancas);
-	}
-
-	public boolean isAberta() {
-		return aberta;
 	}
 }
