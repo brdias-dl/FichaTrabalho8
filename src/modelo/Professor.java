@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Professor extends Pessoa {
+public class Professor extends PessoaComAulas {
 	private GabineteProfessor gabinete;
 	private LinkedList<Horario> horariosAtendimento;
 

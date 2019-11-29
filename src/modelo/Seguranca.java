@@ -2,15 +2,12 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Seguranca {
-	private String nome;
-	private long numero;
+public class Seguranca extends Identificador {
 	private GabineteSeguranca gabinete;
 	private LinkedList<Horario> horariosAtendimento;
 
 	public Seguranca(String nome, long numero, GabineteSeguranca gabinete) {
-		this.nome = nome;
-		this.numero = numero;
+		super(nome, numero);
 		setGabinete(gabinete);
 	}
 
@@ -55,18 +52,6 @@ public class Seguranca {
 	/*
 	* G N S
 	 */
-
-	public long getNumero() {
-		return numero;
-	}
-
-	public void setNumero(long numero) {
-		this.numero = numero;
-	}
-
-	public String getNome() {
-		return nome;
-	}
 
 	public GabineteSeguranca getGabinete() {
 		return gabinete;
