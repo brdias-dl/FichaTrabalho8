@@ -2,13 +2,13 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Sala {
+public class Sala extends Descritor{
 	private String nome;
 	private LinkedList<Aula> aulas;
 	private boolean aberta;
 
 	public Sala(String nome, boolean aberta) {
-		this.nome = nome;
+		super(nome);
 		this.aberta = aberta;
 		aulas = new LinkedList<>();
 	}
@@ -27,12 +27,6 @@ public class Sala {
 
 	public void removerAula(){
 
-	}
-
-
-
-	public String getNome() {
-		return nome;
 	}
 
 	public LinkedList<Aula> getAulas() {

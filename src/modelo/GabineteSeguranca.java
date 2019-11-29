@@ -2,13 +2,12 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class GabineteSeguranca {
-	private String nome;
+public class GabineteSeguranca extends Descritor {
 	private LinkedList<Seguranca> segurancas;
 	private boolean aberta;
 
 	public GabineteSeguranca(String nome, boolean aberta) {
-		this.nome = nome;
+		super(nome);
 		this.aberta = aberta;
 		this.segurancas = new LinkedList<>();
 	}
@@ -33,11 +32,6 @@ public class GabineteSeguranca {
 	/*
 	* G N S
 	 */
-
-
-	public String getNome() {
-		return nome;
-	}
 
 	public LinkedList<Seguranca> getSeguranca() {
 		return new LinkedList<>(segurancas);
