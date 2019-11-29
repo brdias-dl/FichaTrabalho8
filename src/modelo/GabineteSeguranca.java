@@ -4,8 +4,14 @@ import java.util.LinkedList;
 
 public class GabineteSeguranca {
 	private String nome;
-	private LinkedList<Seguranca> seguranca;
+	private LinkedList<Seguranca> segurancas;
 	private boolean aberta;
+
+	public GabineteSeguranca(String nome, boolean aberta) {
+		this.nome = nome;
+		this.aberta = aberta;
+		this.segurancas = new LinkedList<>();
+	}
 
 	public void abrir(){
 
