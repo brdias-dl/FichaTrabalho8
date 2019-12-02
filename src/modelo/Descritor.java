@@ -7,16 +7,11 @@ public class Descritor {
         this.nome = nome;
     }
 
-
     /*
-    * G N S
+     * Getters and Setters
      */
 
-
     public String getNome() {
-        return this.nome;
+        return nome;
     }
-
-
-
 }

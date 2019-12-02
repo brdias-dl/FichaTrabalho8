@@ -3,59 +3,62 @@ package modelo;
 import java.util.LinkedList;
 
 public abstract class PessoaComAulas extends Pessoa {
-	protected LinkedList<Aula> aulas;
+    protected LinkedList<Aula> aulas;
 
-	public PessoaComAulas(String nome, long numero) {
-		super(nome, numero);
-		this.aulas = new LinkedList<Aula>();
-	}
+    public PessoaComAulas(String nome, long numero) {
+        super(nome, numero);
+        this.aulas = new LinkedList<Aula>();
+    }
 
-	protected abstract void associar(Aula aula);
+    protected abstract void associar(Aula aula);
 
-	public void adicionar(Aula aula) {
-		if (aula == null || aulas.contains(aula)) {
-			return;
-		}
-		aulas.add(aula);
-		associar(aula);
-	}
+    public void adicionar(Aula aula) {
+        if (aula == null || aulas.contains(aula)) {
+            return;
+        }
+        aulas.add(aula);
+        associar(aula);
+    }
 
-	protected abstract void desassociar(Aula aula);
+    protected abstract void desassociar(Aula aula);
 
-	public void remover(Aula aula) {
-		if (!aulas.contains(aula)) {
-			return;
-		}
-		aulas.remove(aula);
-		desassociar(aula);
-	}
+    public void remover(Aula aula) {
+        if(!aulas.contains(aula)) {
+            return;
+        }
+        aulas.remove(aula);
+        desassociar(aula);
+    }
 
-	protected abstract void escreverSumario(Aula aula);
+    protected abstract void escreverSumario(Aula aula);
 
-	public void preencherSumario(Aula aula) {
-		if (!aulas.contains(aula)) {
-			return;
-		}
+    public void preencherSumario(Aula aula) {
+        if (!aulas.contains(aula)) {
+            return;
+        }
+        escreverSumario(aula);
+    }
 
-		escreverSumario(aula);
-	}
+    protected void assinarSumario(Aula aula) {
+        aula.adicionarLinhaSumario(nome);
+    }
 
-	public LinkedList<Aula> getAulas() {
-		return new LinkedList<>(aulas);
-	}
+    /*
+     * Getters and Setters
+     */
 
-	public LinkedList<Aula> getAulas(Horario horario) {
-		LinkedList<Aula> listaAuxiliar = new LinkedList<>();
-		for (Aula elementoAula : aulas) {
-			if (elementoAula.getHorario().isSobre(horario)) {
-				listaAuxiliar.add(elementoAula);
-			}
-		}
+    public LinkedList<Aula> getAulas() {
+        return new LinkedList<>(aulas);
+    }
 
-		return listaAuxiliar;
-	}
+    public LinkedList<Aula> getAulas(Horario horario) {
+        LinkedList<Aula> listaAuxiliar = new LinkedList<>();
 
-	protected void assinarSumario(Aula aula){
-		aula.adicionarLinhaSumario(nome);
-	}
+        for (Aula a : aulas) {
+            if (a.getHorario().isSobre(horario)) {
+                listaAuxiliar.add(a);
+            }
+        }
+        return  listaAuxiliar;
+    }
 }

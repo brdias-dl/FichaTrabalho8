@@ -3,98 +3,105 @@ package modelo;
 import java.util.LinkedList;
 
 public class Professor extends PessoaComAulas {
-	private GabineteProfessor gabinete;
-	private LinkedList<Horario> horariosAtendimento;
+    private GabineteProfessor gabinete;
+    private LinkedList<Horario> horariosAtendimento;
 
-	public Professor(String nome, long numero, GabineteProfessor gabinete ) {
-		super(nome, numero);
-		setGabinete(gabinete);
-		this.horariosAtendimento = new LinkedList<>();
-	}
 
-	@Override
-	protected void associar(Aula aula) {
-		aula.setProfessor(this);
-	}
+    public Professor(String nome, long numero, GabineteProfessor gabinete) {
+        super(nome, numero);
+        setGabinete(gabinete);
+        this.horariosAtendimento = new LinkedList<>();
+    }
 
-	@Override
-	protected void desassociar(Aula aula) {
-		aula.dessassociarProfessor();
-	}
+    @Override
+    protected void associar(Aula aula) {
+        aula.setProfessor(this);
+    }
 
-	@Override
-	protected void escreverSumario(Aula aula) {
-		aula.adicionarLinhaSumario(aula.getNome());
-		aula.adicionarLinhaSumario(String.valueOf(aula.getNumero()));
-		assinarSumario(aula);
-		for (Aluno a : aula.getAlunos()) {
-			a.preencherSumario(aula);
-		}
-	}
+    @Override
+    protected void desassociar(Aula aula) {
+        aula.desassociarProfessor();
+    }
 
-	public void abrirGabinete() {
-		if (gabinete == null || gabinete.isAberta()){
-			return;
-		}
-		gabinete.abrir();
-	}
+    @Override
+    protected void escreverSumario(Aula aula) {
+        aula.adicionarLinhaSumario(aula.getNome());
+        aula.adicionarLinhaSumario(String.valueOf(aula.getNumero()));
+        assinarSumario(aula);
+        for (Aluno a : aula.getAlunos()) {
+            a.preencherSumario(aula);
+        }
+    }
 
-	public void fecharGabinete(){
-		if(gabinete == null || !gabinete.isAberta()){
-			return;
-		}
-		gabinete.fechar();
-	}
+    public void abrirGabinete() {
+        if (gabinete == null || gabinete.isAberta()) {
+            return;
+        }
+        gabinete.abrir();
+    }
 
-	public void abrir(Sala sala){
+    public void fecharGabinete() {
+        if (gabinete == null || !gabinete.isAberta()) {
+            return;
+        }
+        gabinete.fechar();
+    }
 
-	}
+    public void abrir(Sala sala){
+        if (sala == null || sala.isAberta()) {
+            return;
+        }
+        sala.abrir();
+    }
 
-	public void fechar(Sala sala){
+    public void fechar(Sala sala){
+        if (sala == null || !sala.isAberta()) {
+            return;
+        }
+        sala.abrir();
+    }
 
-	}
+    public void desassociarGabinete() {
+        if (gabinete == null) {
+            return;
+        }
+        gabinete.remover(this);
+        gabinete = null;
+    }
 
-	public void  desassociarGabinete(){
-		if (gabinete == null){
-			return;
-		}
+    public void adicionar(Horario horario) {
+        if (horariosAtendimento.contains(horario)) {
+            return;
+        }
+        horariosAtendimento.add(horario);
+    }
 
-		gabinete.remover(this);
-		gabinete = null;
-	}
+    public void remover(Horario horario) {
+        horariosAtendimento.remove(horario);
+    }
 
-	public void adicionar(Horario horario){
-		if(horariosAtendimento.contains(horario)){
-			return;
-		}
-		horariosAtendimento.add(horario);
-	}
+    /*
+     * Getters and Setters
+     */
 
-	public void remover(Horario horario){
-		horariosAtendimento.remove(horario);
-	}
+    public GabineteProfessor getGabinete() {
+        return gabinete;
+    }
 
-	/*
-	*getter n setter
-	 */
+    public void setGabinete(GabineteProfessor gabinete) {
+        if (gabinete == null || this.gabinete == gabinete) {
+            return;
+        }
 
-	public GabineteProfessor getGabinete() {
-		return gabinete;
-	}
+        if (this.gabinete != null) {
+            this.gabinete.remover(this);
+        }
 
-	public LinkedList<Horario> getHorariosAtendimento() {
-		return new LinkedList<>(horariosAtendimento);
-	}
+        this.gabinete = gabinete;
+        gabinete.adicionar(this);
+    }
 
-	public void setGabinete(GabineteProfessor gabinete) {
-		if (gabinete == null || this.gabinete == gabinete) {
-			return;
-		}
-		if (this.gabinete != null){
-			this.gabinete.remover(this);
-		}
-		this.gabinete = gabinete;
-		gabinete.adicionar(this);
-	}
-
+    public LinkedList<Horario> getHorariosAtendimento() {
+        return new LinkedList<>(horariosAtendimento);
+    }
 }

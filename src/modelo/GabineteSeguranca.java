@@ -10,7 +10,8 @@ public class GabineteSeguranca extends Divisao {
         this.segurancas = new LinkedList<>();
     }
 
-    public void adicionar(Seguranca seguranca) {
+
+    public void adicionar(Seguranca seguranca){
         if (seguranca == null || segurancas.contains(seguranca)) {
             return;
         }
@@ -18,8 +19,7 @@ public class GabineteSeguranca extends Divisao {
         seguranca.setGabinete(this);
     }
 
-
-    public void remover(Seguranca seguranca) {
+    public void remover(Seguranca seguranca){
         if (!segurancas.contains(seguranca)) {
             return;
         }
@@ -28,10 +28,10 @@ public class GabineteSeguranca extends Divisao {
     }
 
     /*
-     * G N S
+     * Getters and Setters
      */
 
-    public LinkedList<Seguranca> getSeguranca() {
+    public LinkedList<Seguranca> getSegurancas() {
         return new LinkedList<>(segurancas);
     }
 

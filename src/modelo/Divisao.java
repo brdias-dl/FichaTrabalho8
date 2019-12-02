@@ -9,19 +9,18 @@ public class Divisao extends Descritor {
     }
 
     public void abrir(){
-        this.aberta= true;
+        this.aberta = true;
     }
 
     public void fechar(){
-        this.aberta=false;
+        this.aberta = false;
     }
+
     /*
-    * G N S
+     * Getter and Setters
      */
 
     public boolean isAberta() {
         return aberta;
     }
-
-
 }

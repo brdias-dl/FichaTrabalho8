@@ -1,21 +1,23 @@
 package modelo;
 
-import java.util.LinkedList;
-
 public class Identificador extends Descritor {
-	protected long numero;
 
-	public Identificador(String nome, long numero) {
-		super(nome);
-		this.numero = numero;
-	}
+    protected long numero;
 
-	public long getNumero() {
-		return numero;
-	}
+    public Identificador(String nome, long numero) {
+        super(nome);
+        this.numero = numero;
+    }
 
-	public void setNumero(long numero) {
-		this.numero = numero;
-	}
+    /*
+     * Getters and Setters
+     */
 
+    public long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(long numero) {
+        this.numero = numero;
+    }
 }
